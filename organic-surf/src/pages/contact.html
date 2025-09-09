@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Organic Surf — Contact</title>
+<link rel="stylesheet" href="../styles/main.css">
+<meta name="description" content="Request the Info Pack (PDF), schedule a site visit, or talk via WhatsApp. Retreat-ready investment in Pavones, Costa Rica.">
+</head>
+<body>
+<header class="site-header">
+  <img src="../assets/images/design/logo-white.svg" alt="Organic Surf" class="logo">
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="first-project.html">Retreat Project</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="page">
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p class="muted">Request the Info Pack (PDF), schedule a site visit, or ask anything about the retreat-ready property in Pavones.</p>
+
+    <!-- Lead form card -->
+    <section class="card" style="padding:20px; margin-top:16px;">
+      <!-- TIP: swap mailto for a form service (Formspree/Netlify) when you’re ready -->
+      <form action="mailto:info@organic-surf.org" method="POST" enctype="text/plain">
+        <!-- Anti-spam honeypot -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@domain.com" required />
+          </div>
+
+          <div>
+            <label for="whatsapp">WhatsApp (optional)</label>
+            <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" placeholder="+506 8509 4439" />
+          </div>
+
+          <div>
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" placeholder="Info Pack / Site Visit / Investment" />
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Tell us what you need or how you plan to use the property (yoga/wellness retreat, eco-luxury, etc.)" required></textarea>
+        </div>
+
+        <div style="margin-top:10px; display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+          <label style="display:flex; align-items:center; gap:8px;">
+            <input type="checkbox" name="contact_whatsapp" value="yes" />
+            Prefer WhatsApp reply
+          </label>
+          <label style="display:flex; align-items:center; gap:8px;">
+            <input type="checkbox" name="request_info_pack" value="yes" />
+            Please send me the Info Pack (PDF)
+          </label>
+        </div>
+
+        <!-- Hidden extras -->
+        <input type="hidden" name="_subject" value="New lead from organic-surf.org" />
+        <input type="hidden" name="_template" value="table" />
+
+        <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
+          <button type="submit" class="btn-primary">Send</button>
+          <a class="btn-secondary" href="https://wa.me/50685094439" target="_blank" rel="noopener">Message on WhatsApp</a>
+          <a class="btn-secondary" href="first-project.html">View Retreat Project</a>
+        </div>
+
+        <p class="muted" style="margin-top:10px; font-size:.95rem;">
+          Or email us directly at
+          <a href="mailto:info@organic-surf.org">info@organic-surf.org</a>
+        </p>
+
+        <p class="muted" style="margin-top:6px; font-size:.9rem;">
+          We keep details discreet. Pricing and sensitive information are shared privately upon request.
+        </p>
+      </form>
+    </section>
+
+    <!-- Quick contacts -->
+    <section style="margin-top:22px;">
+      <ul class="facts">
+        <li><strong>Location:</strong> Pavones, Costa Rica</li>
+        <li><strong>Email:</strong> <a href="mailto:info@organic-surf.org">info@organic-surf.org</a></li>
+        <li><strong>WhatsApp:</strong> <a href="https://wa.me/50685094439" target="_blank" rel="noopener">+506 8509 4439</a></li>
+        <li><strong>Instagram:</strong> <a href="https://www.instagram.com/organic.surf_" target="_blank" rel="noopener">@organic.surf_</a></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-content">
+
+    <!-- First line: Logo -->
+    <div class="footer-top">
+      <img src="../assets/images/design/logo-white.svg" 
+           alt="Organic Surf Logo" 
+           class="footer-logo">
+    </div>
+
+    <!-- Second line: all in one row -->
+    <div class="footer-bottom">
+      <div class="social-links">
+        <a href="https://www.instagram.com/organic.surf_" target="_blank" aria-label="Instagram">
+          <img src="../assets/icons/instagram.svg" alt="Instagram">
+        </a>
+        <a href="https://wa.me/50685094439" target="_blank" aria-label="WhatsApp">
+          <img src="../assets/icons/whatsapp.webp" alt="WhatsApp">
+        </a>
+      </div>
+      <p class="footer-email"><a href="mailto:info@organic-surf.org">info@organic-surf.org</a></p>
+      <p class="footer-copy">© 2025 Organic Surf</p>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
+
