@@ -26,59 +26,60 @@
 
     <!-- Lead form card -->
     <section class="card" style="padding:20px; margin-top:16px;">
-      <!-- Backend propio: /api/contact -->
+      <!-- TIP: swap mailto for a form service (Formspree/Netlify) when you’re ready -->
       <form id="lead-form" action="https://formspree.io/f/mrbawjlk" method="POST">
+  <!-- Anti-spam honeypot -->
+  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-        <!-- Anti-spam honeypot -->
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+    <div>
+      <label for="name">Full Name</label>
+      <input id="name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="you@domain.com" required autocomplete="email" />
+    </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-          <div>
-            <label for="name">Full Name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@domain.com" required autocomplete="email" />
-          </div>
+    <div>
+      <label for="whatsapp">WhatsApp (optional)</label>
+      <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" placeholder="+506 8509 4439" autocomplete="tel" />
+    </div>
 
-          <div>
-            <label for="whatsapp">WhatsApp (optional)</label>
-            <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" placeholder="+506 8509 4439" autocomplete="tel" />
-          </div>
+    <div>
+      <label for="subject">Subject</label>
+      <input id="subject" name="subject" type="text" placeholder="Info Pack / Site Visit / Investment" />
+    </div>
+  </div>
 
-          <div>
-            <label for="subject">Subject</label>
-            <input id="subject" name="subject" type="text" placeholder="Info Pack / Site Visit / Investment" />
-          </div>
-        </div>
+  <div style="margin-top:12px;">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="6" placeholder="Tell us what you need..." required></textarea>
+  </div>
 
-        <div style="margin-top:12px;">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6" placeholder="Tell us what you need..." required></textarea>
-        </div>
+  <div style="margin-top:10px; display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+    <label style="display:flex; align-items:center; gap:8px;">
+      <input type="checkbox" name="contact_whatsapp" value="yes" />
+      Prefer WhatsApp reply
+    </label>
+    <label style="display:flex; align-items:center; gap:8px;">
+      <input type="checkbox" name="request_info_pack" value="yes" />
+      Please send me the Info Pack (PDF)
+    </label>
+  </div>
 
-        <div style="margin-top:10px; display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
-          <label style="display:flex; align-items:center; gap:8px;">
-            <input type="checkbox" name="contact_whatsapp" value="yes" />
-            Prefer WhatsApp reply
-          </label>
-          <label style="display:flex; align-items:center; gap:8px;">
-            <input type="checkbox" name="request_info_pack" value="yes" />
-            Please send me the Info Pack (PDF)
-          </label>
-        </div>
+  <!-- Subject for your inbox + redirect after success -->
+  <input type="hidden" name="_subject" value="New lead from organic-surf.org" />
+  <input type="hidden" name="_redirect" value="https://organic-surf.org/pages/thank-you.html" />
 
-        <!-- (El subject y redirect ahora los maneja el backend/JS) -->
+  <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
+    <button type="submit" class="btn-primary">Send</button>
+    <a class="btn-secondary" href="https://wa.me/50685094439" target="_blank" rel="noopener">Message on WhatsApp</a>
+    <a class="btn-secondary" href="../first-project.html">View Retreat Project</a>
+  </div>
 
-        <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
-          <button type="submit" class="btn-primary">Send</button>
-          <a class="btn-secondary" href="https://wa.me/50685094439" target="_blank" rel="noopener">Message on WhatsApp</a>
-          <a class="btn-secondary" href="../first-project.html">View Retreat Project</a>
-        </div>
-
-        <p id="form-status" class="muted" style="margin-top:10px; font-size:.95rem;"></p>
-      </form>
+  <p id="form-status" class="muted" style="margin-top:10px; font-size:.95rem;"></p>
+</form>
     </section>
 
     <!-- Quick contacts -->
@@ -95,9 +96,15 @@
 
 <footer class="site-footer">
   <div class="footer-content">
+
+    <!-- First line: Logo -->
     <div class="footer-top">
-      <img src="../assets/images/design/logo-white.svg" alt="Organic Surf Logo" class="footer-logo">
+      <img src="../assets/images/design/logo-white.svg" 
+           alt="Organic Surf Logo" 
+           class="footer-logo">
     </div>
+
+    <!-- Second line: all in one row -->
     <div class="footer-bottom">
       <div class="social-links">
         <a href="https://www.instagram.com/organic.surf_" target="_blank" aria-label="Instagram">
@@ -110,41 +117,10 @@
       <p class="footer-email"><a href="mailto:info@organic-surf.org">info@organic-surf.org</a></p>
       <p class="footer-copy">© 2025 Organic Surf</p>
     </div>
+
   </div>
 </footer>
 
-<script>
-  (function () {
-    const form = document.getElementById('lead-form');
-    const statusEl = document.getElementById('form-status');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      statusEl.textContent = 'Sending…';
-
-      try {
-        const fd = new FormData(form);
-        // Honeypot: si está relleno, ignorar (bot)
-        if (fd.get('_gotcha')) return;
-
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: fd,
-          credentials: 'same-origin' // evita problemas de CORS en mismo dominio
-        });
-
-        if (res.ok) {
-          window.location.href = '/pages/thank-you.html';
-        } else {
-          const msg = await res.text();
-          statusEl.textContent = 'Error sending the form. ' + (msg || '');
-        }
-      } catch (err) {
-        statusEl.textContent = 'Network error. Please try again.';
-      }
-    });
-  })();
-</script>
-
 </body>
 </html>
+
